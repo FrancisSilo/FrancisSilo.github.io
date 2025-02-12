@@ -5,13 +5,13 @@ body {
 }
 
 .layout_padding {
-  padding-top: 120px;
+  padding-top: 100px;
   padding-bottom: 120px;
 }
 
 .layout_padding2 {
-  padding-top: 45px;
-  padding-bottom: 45px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .layout_padding2-top {
@@ -71,7 +71,18 @@ body {
   background-image: url(../images/avs.jpg);
   background-size: cover;
   background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+}
+
 
 .sub_page .hero_area {
   height: auto;
@@ -186,8 +197,8 @@ a:focus {
 }
 
 .navbar-brand span img {
-  border-radius: 60%;
-  width: 10%;
+  border-radius: 80%;
+  width: 8%;
   height: 15%;
 }
 
@@ -216,6 +227,8 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
   color: #ffffff;
+  padding-top: 90px;
+  overflow: hidden;
 }
 
 .slider_section #carouselExampleIndicators {
@@ -235,6 +248,12 @@ a:focus {
 .slider_section .detail-box {
   text-align: center;
 }
+
+  .slider_section .detail-box p {
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100% - 180px); /* Adjust based on your design */
+    padding-right: 20px; /* Add some padding for scrollbar */
+  }
 
 .slider_section .detail-box h1,
 .slider_section .detail-box h2,
@@ -264,17 +283,52 @@ a:focus {
   border: 1.5px solid #ffffff;
   color: #ffffff;
   border-radius: 0px;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
   text-transform: uppercase;
   margin-top: 35px;
+  /* Add animation properties */
+  animation: bgChange 6s infinite alternate, textChange 6s infinite alternate; /* Adjust timing as needed */
 }
 
+/* Define keyframes for background color changing */
+@keyframes bgChange {
+  0% {
+    background-color: rgb(0, 0, 0); /* Start color */
+  }
+  25% {
+    background-color: rgb(50, 50, 50); /* Middle color */
+  }
+  50% {
+    background-color: rgb(100, 100, 100); /* Middle color */
+  }
+  75% {
+    background-color: rgb(150, 150, 150); /* Middle color */
+  }
+  100% {
+    background-color: rgb(0, 0, 0); /* End color */
+  }
+}
+
+/* Define keyframes for text color changing */
+@keyframes textChange {
+  0% {
+    color: #ffffff; /* Start color */
+  }
+  25% {
+    color: #ff2953; /* Middle color */
+  }
+  50% {
+    color: #00ff00; /* Middle color */
+  }
+  75% {
+    color: #0000ff; /* Middle color */
+  }
+  100% {
+    color: #ffffff; /* End color */
+  }
+}
 .slider_section .detail-box a:hover {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #ff2953;
+  color: #ff2953;
 }
 
 .slider_section #carouselExampleIndicators .carousel-indicators {
@@ -297,6 +351,58 @@ a:focus {
 
 .slider_section #carouselExampleIndicators .carousel-indicators li.active {
   border: 4px solid #ffffff;
+}
+
+.typing-effect {
+  overflow: hidden;
+  margin: 0 auto; /* Center the text */
+  border-right: 2px solid transparent; /* Add a transparent border */
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black; /* Adjust caret color */
+  }
+}
+
+@keyframes glowing {
+  0% {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8); /* Lukewarm green */
+  }
+  25% {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8); /* Lukewarm green */
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* Red */
+  }
+  75% {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); /* Red */
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(0, 0, 255, 0.8); /* Blue */
+  }
+}
+
+.slider_section h1,
+.slider_section h2,
+.slider_section h4 {
+  animation: typing 4s steps(40, end) forwards, glowing 4s steps(40, end) forwards;
 }
 
 .us_section {
@@ -336,6 +442,7 @@ a:focus {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+          filter: brightness(0) invert(1);
 }
 
 .us_section .us_container .box .img-box img {
@@ -344,7 +451,92 @@ a:focus {
 
 .us_section .us_container .box .detail-box h5 {
   font-weight: bold;
+  color: #f0f0f0;
 }
+
+.skills_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.heading_container-1 h2 {
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.skill_item {
+  width: calc(50% - 10px); /* Adjust width and margins as needed */
+}
+
+.skill_name {
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.skill_progress {
+  width: 100%;
+  height: 30px;
+  background-color: #1a2186;
+  border-radius: 10px;
+  position: relative;
+}
+
+.skill_bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #ff2953; /* Default background color */
+  width: var(--percentage); /* Initial width */
+  transition: width 0.5s; /* Smooth transition animation */
+}
+
+.skill_percentage {
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+  color: #fae6e6;
+  padding-bottom: 15px;
+}
+
+.progress {
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.progress-bar {
+  height: 30px;
+  line-height: 30px;
+  color: #ffffff;
+  background-color: #ff2953;
+  border-radius: 5px;
+  text-align: center;
+  transition: width 1s ease-in-out;
+}
+.skill_item:hover .skill_bar {
+  animation: animateSkillBar 2s forwards; /* Animation on hover */
+}
+
+
+@keyframes animateSkillBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: calc(var(--percentage) * 1%);
+  }
+}
+
 
 .heathy_section {
   background-image: url(../images/cvr.avif);
@@ -390,6 +582,8 @@ a:focus {
   background-color: #ffffff;
   color: #000000;
 }
+
+
 
 .contact_section {
   position: relative;
@@ -476,7 +670,8 @@ a:focus {
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .info_items .item {
@@ -495,20 +690,24 @@ a:focus {
 }
 
 .info_items .item .img-box {
-  width: 80px;
-  height: 80px;
-  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .info_items .item .detail-box {
-  margin-top: 5px;
+  margin-top: 10px;
   color: #fff;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .info_items {
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 
 .info_items a {
@@ -541,4 +740,119 @@ a:focus {
 
 .footer_section a {
   color: #292929;
+}
+
+.card {
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+  background-color: #27223f;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 0, 0, 0.7);
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card:hover .card-overlay {
+  opacity: 2;
+}
+
+.card-body {
+  position: relative;
+  z-index: 2;
+}
+
+.card-text {
+  display: none;
+  color: #fff;
+  z-index: 3;
+  transition: opacity 0.3s;
+}
+
+.card:hover .card-text {
+  display: block;
+  opacity: 1;
+}
+
+.progress-container {
+  position: relative;
+  z-index: 2;
+}
+
+.progress-dots {
+  display: flex;
+  justify-content: center;
+}
+
+.progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 5px;
+}
+
+.active-dot {
+  background-color: #ff2953;
+}
+
+#backToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  background-color: #ff2953;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background-color 0.3s;
+}
+
+#backToTopBtn:hover {
+  background-color: #d63031;
+}
+
+.fa-arrow-up {
+  margin-top: 12px; /* Adjust vertical alignment */
+}
+
+@media (max-width: 768px) {
+  .us_section {
+    padding-top: 770px; /* Adjust the value as needed */
+  }
+
+  .info_items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .info_items .item {
+    width: 100%;
+    margin-bottom: 30px; /* Add margin between items */
+  }
 }
